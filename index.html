@@ -8,7 +8,7 @@
 <style>
 body {
     margin: 0;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,128 +16,22 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.container {
-    width: 90%;
-    max-width: 600px;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-h2 {
-    margin-top: 0;
-    color: #222;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 15px;
-}
-
 button {
-    padding: 13px 30px;
-    font-size: 16px;
+    padding: 15px 40px;
+    font-size: 18px;
     border: none;
     border-radius: 8px;
     background: #0066ff;
     color: white;
     cursor: pointer;
 }
-
-button:hover {
-    background: #0052cc;
-}
-
-.url-container {
-    margin-top: 20px;
-    display: none;
-}
-
-.url-container label {
-    margin-bottom: 8px;
-}
-
-.generated-url {
-    padding: 12px;
-    background: #f1f3f5;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    word-break: break-all;
-    color: #333;
-}
 </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h2>Proceed to Payment</h2>
-
-    <label for="pgwtoken">PGW Token</label>
-
-    <input
-        type="text"
-        id="pgwtoken"
-        placeholder="Enter pgwtoken"
-    >
-
-    <button onclick="generateUrl()">
-        Generate Payment URL
-    </button>
-
-    <div class="url-container" id="urlContainer">
-        <label>Generated Payment URL</label>
-        <div class="generated-url" id="generatedUrl"></div>
-
-        <br>
-
-        <button onclick="proceedToPayment()">
-            Pay Now
-        </button>
-    </div>
-</div>
-
-<script>
-const baseUrl =
-    "http://k2prod.citybankplc.com/merchant-gateway/signin/";
-
-let paymentUrl = "";
-
-function generateUrl() {
-    const token = document.getElementById("pgwtoken").value.trim();
-
-    if (!token) {
-        alert("Please enter the pgwtoken.");
-        return;
-    }
-
-    // Encode the token once for use as a URL query parameter
-    const encodedToken = encodeURIComponent(token);
-
-    paymentUrl = `${baseUrl}?pgwtoken=${encodedToken}`;
-
-    document.getElementById("generatedUrl").textContent = paymentUrl;
-    document.getElementById("urlContainer").style.display = "block";
-}
-
-function proceedToPayment() {
-    if (paymentUrl) {
-        window.location.href = paymentUrl;
-    }
-}
-</script>
+<button onclick="window.location.href='http://k2prod.citybankplc.com/merchant-gateway/signin/?pgwtoken=Ak5TR3brvS9%252FsDXZiz3lIQ%253D%253D'">
+    Pay Now
+</button>
 
 </body>
 </html>

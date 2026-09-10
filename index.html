@@ -1,91 +1,68 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Payment Selection</title>
-  <style>
-    :root {
-      --primary: #0066ff;
-      --primary-hover: #0052cc;
-      --surface: #f5f7fa;
-      --card-bg: #ffffff;
-      --text: #1a1a1a;
-      --radius: 10px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceed to Payment</title>
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background-color: var(--surface);
-      font-family: system-ui, -apple-system, sans-serif;
-      color: var(--text);
-    }
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f7fa;
+            font-family: Arial, sans-serif;
+        }
 
-    .payment-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      width: min(90vw, 680px);
-      padding: 24px;
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
-    }
+        .payment-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-    .payment-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      background: var(--primary);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: calc(var(--radius) - 2px);
-      transition: background 0.2s ease, transform 0.1s ease;
-    }
+        button {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background: #0066ff;
+            color: white;
+            cursor: pointer;
+        }
 
-    .payment-btn:hover { background: var(--primary-hover); }
-    .payment-btn:active { transform: scale(0.98); }
-    .payment-btn:focus-visible {
-      outline: 2px solid var(--text);
-      outline-offset: 2px;
-    }
-  </style>
+        button:hover {
+            background: #0052cc;
+        }
+    </style>
 </head>
+
 <body>
 
-  <main class="payment-grid" id="checkoutList" role="list" aria-label="Available payment options"></main>
+    <div class="payment-container">
 
-  <script type="module">
-    const BASE_URL = "http://k2prod.citybankplc.com/merchant-gateway/signin/?pgwtoken=";
+        <button onclick="window.location.href='http://k2prod.citybankplc.com/merchant-gateway/signin/?pgwtoken=KGHhRIZqN5dpeL0QuZTKOQ%253D%253D'">
+            Pay Now
+        </button>
 
-    const tokens = [
-      "KGHhRIZqN5dpeL0QuZTKOQ%253D%253D",
-      "5AZ5mGzUwWjx3EBap1Qc6A%253D%253D",
-      "Onh8Z33RpSVVuXlCeDDKQg%253D%253D",
-      "oUZwP8X%252FqLQ%252BylRdokLjog%253D%253D"
-    ];
+        <button onclick="window.location.href='http://k2prod.citybankplc.com/merchant-gateway/signin/?pgwtoken=5AZ5mGzUwWjx3EBap1Qc6A%253D%253D'">
+            Pay Now
+        </button>
 
-    const container = document.getElementById("checkoutList");
-    const fragment = document.createDocumentFragment();
+        <button onclick="window.location.href='http://k2prod.citybankplc.com/merchant-gateway/signin/?pgwtoken=Onh8Z33RpSVVuXlCeDDKQg%253D%253D'">
+            Pay Now
+        </button>
 
-    tokens.forEach((token, index) => {
-      const link = document.createElement("a");
-      link.href = `${BASE_URL}${token}`;
-      link.className = "payment-btn";
-      link.textContent = `Pay Option ${index + 1}`;
-      link.rel = "noopener noreferrer";
-      link.setAttribute("role", "listitem");
-      fragment.appendChild(link);
-    });
+        <button onclick="window.location.href='http://k2prod.citybankplc.com/merchant-gateway/signin/?pgwtoken=oUZwP8X%252FqLQ%252BylRdokLjog%253D%253D'">
+            Pay Now
+        </button>
 
-    container.appendChild(fragment);
-  </script>
+    </div>
 
 </body>
+
 </html>
+```
